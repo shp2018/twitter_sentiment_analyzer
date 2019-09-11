@@ -2,14 +2,21 @@
 <head>
    
 </head>
+<script>
+
+</script>
 <body>
     <form method="GET">
         <input name="search_item">
         <input type="submit">
+    
+    
     </form>
-    {% for tweet_obj in tweet_objs %}
-        <div>{{ tweet_obj ['text']}}</div>
+    {% for i in range(counter|length) %}
+        <div>{{ tweet_objs[i]["text"] }}</div>
+        <div>{{ counter[i] }}</div>
         <br/>
+    
     {% endfor %}
   
 </body>
