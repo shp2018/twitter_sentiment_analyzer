@@ -1,0 +1,15 @@
+
+<head>
+   
+</head>
+<body>
+    <form method="GET">
+        <input name="search_item">
+        <input type="submit">
+    </form>
+    {% for tweet_obj in tweet_objs %}
+        <div>{{ tweet_obj ['text']}}</div>
+        <br/>
+    {% endfor %}
+  
+</body>
