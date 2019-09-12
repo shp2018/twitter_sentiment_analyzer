@@ -1,22 +1,27 @@
-
 <head>
-   
+    <link href="styles.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Manjari&display=swap" rel="stylesheet">
 </head>
 <script>
 
 </script>
+
 <body>
-    <form method="GET">
-        <input name="search_item">
-        <input type="submit">
-    
-    
+    <form id = top method="GET">
+        <img id= "logo" src="https://upload.wikimedia.org/wikipedia/fr/archive/c/c8/20160903181213%21Twitter_Bird.svg"></img>
+        <div id="search-bar-container">
+            <input id="search-bar" name="search_item" placeholder="Type anything" autofocus>
+            <button id = "button"> submit </button>
+        </div>
+        
+
+
     </form>
     {% for i in range(counter|length) %}
-        <div>{{ tweet_objs[i]["text"] }}</div>
-        <div>{{ counter[i] }}</div>
-        <br/>
-    
+    <div>{{ tweet_objs[i]["text"] }}</div>
+    <div>{{ counter[i] }}</div>
+    <br />
+
     {% endfor %}
-  
+
 </body>

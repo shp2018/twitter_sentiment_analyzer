@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 import requests
 import json
 import os
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='')
 
 @app.route('/')
 def home():
@@ -24,13 +24,14 @@ def home():
 
 
 def get_tweets(searchitem): 
-    url = 'https://api.twitter.com/1.1/search/tweets.json?q=%23{}&result_type=recent'.format(searchitem)
+    url = 'https://api.twitter.com/1.1/search/tweets.json?q=%23{}'.format(searchitem)
     BEARER_TOKEN = os.getenv("BEARER_TOKEN")
     headers = {'authorization': 'Bearer {}'.format(BEARER_TOKEN)}
     res = requests.get(url, headers=headers)
     return res.content
 
 def run_analysis(tweet_text):
+    tweet_text = tweet_text.lower()
     with open('positive.txt', 'r') as f:
         good_words = set(f.read().split("\n"))
     with open('negative.txt', 'r') as f:
@@ -40,6 +41,7 @@ def run_analysis(tweet_text):
     good_counter = 0
     bad_counter = 0
     for word in words:
+        word= word.strip()
         if word in good_words:
             good_counter += 1
         if word in bad_words:
